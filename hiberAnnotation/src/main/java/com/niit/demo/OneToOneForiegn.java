@@ -10,7 +10,7 @@ import org.hibernate.cfg.Configuration;
 public class OneToOneForiegn {
 
 	public static void main(String[] args) {
-		Configuration cfg = new Configuration();
+		try{Configuration cfg = new Configuration();
 		cfg.configure("hibernate.cfg.xml");
 		SessionFactory factory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
 		Session sess = factory.openSession();
@@ -20,8 +20,9 @@ public class OneToOneForiegn {
 		newBook.setTitle("Hibernate Made Easy");
 		newBook.setDescription("Simplified Data Persistence with Hibernate and JPA");
 		newBook.setPublishedDate(new Date());
-
-		newBook.setAuthor(new Author("Cameron Wallace McKenzie", "Cameron@gmail.com"));
+		Author auth1 = new Author("Cameron Wallace McKenzie", "Cameron@gmail.com");
+		newBook.setAuthor(auth1);
+		auth1.setBook(newBook);
 
 		Long BookId = (Long) sess.save(newBook);
 
@@ -34,8 +35,10 @@ public class OneToOneForiegn {
 		System.out.println("Author's Email: " + author.getEmail());
 
 		sess.getTransaction().commit();
-		sess.close();
-
+		sess.close();}
+		catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
 	}
 
 }

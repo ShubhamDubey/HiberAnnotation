@@ -1,9 +1,11 @@
 package com.niit.demo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -11,10 +13,14 @@ import javax.persistence.Table;
 public class Author {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "author_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String name, email;
-
+	
+	@OneToOne(mappedBy="author")
+	private Book book;
+	
 	public Author(String name, String email) {
 		super();
 		this.name = name;
@@ -44,7 +50,13 @@ public class Author {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
 
 }
