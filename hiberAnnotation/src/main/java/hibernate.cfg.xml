@@ -6,7 +6,6 @@
 	<session-factory>
 
 		<property name="hbm2ddl.auto">create</property>
-		
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="hibernate.connection.password">root</property>
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hiberanno</property>
@@ -16,9 +15,9 @@
 		<!-- <mapping class="com.niit.demo.Employee"></mapping> -->
 		<!--<mapping class="com.niit.demo.Customer"></mapping> -->
 		<!--<mapping class="com.niit.demo.Address"></mapping> -->
-		<!--<mapping class="com.niit.demo.Author"></mapping> <mapping class="com.niit.demo.Book"></mapping> -->
-
-		<mapping class="com.niit.demo.Question"></mapping>
-		<mapping class="com.niit.demo.Answer"></mapping>
+		<!--<mapping class="com.niit.demo.Author"></mapping> <mapping class="com.niit.demo.Book"></mapping> 
+			<mapping class="com.niit.demo.Question"></mapping> <mapping class="com.niit.demo.Answer"></mapping> -->
+		<mapping class="com.niit.demo.Cart"></mapping>
+		<mapping class="com.niit.demo.Item"></mapping>
 	</session-factory>
 </hibernate-configuration>
